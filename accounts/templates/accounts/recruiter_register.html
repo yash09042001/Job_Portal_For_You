@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as a Recruiter</title>
+  <link rel="stylesheet" href="{% static 'account/css/recruiter_register.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
+<body class="d-flex align-items-center justify-content-center vh-200 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card p-4 shadow">
+          <h2 class="text-center mb-4">Register as a Recruiter</h2>
+          {%load crispy_forms_tags %} 
+          {% block content%}
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+          {% endblock content %}
+            <div class="text-center mt-4">
+              <p class="text-small mb-0">Already have an account? <br><a href="{% url 'accounts:login' %}" class="text-decoration-none">Log in</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl6zN3QOnEJhO8uTVyD8oKHzVSDt3vobFu5gmxEJFTfeyjD1cG1RD41hH/A" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGmYFIhCs2v8z+BxPp5K9UJ4lRPTI7W/cn3p9CEeIH0AXuhp+1bBsAz7wF6" crossorigin="anonymous"></script>
+</body>
+</html>

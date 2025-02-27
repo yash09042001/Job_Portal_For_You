@@ -1,0 +1,33 @@
+{% extends "dashboard/sidebar.html" %}
+{% load static %}
+{% block mydashboard %}
+<div class="container mt-5">
+    <h2 class="text-center">My Profile</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ user.get_full_name }}</p>
+            <p><strong>Gender:</strong> {{ user.gender }}</p>
+            <p><strong>Date Of Birth:</strong> {{ user.dob }}</p>
+            <p><strong>Mobile:</strong> {{ user.mobile }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Skills:</strong> {{ user.candidate.skill }}</p>
+            <p><strong>Experience:</strong> {{ user.candidate.experience }}</p>
+            <p><strong>CV:</strong> 
+                {% if user.candidate.cv %}
+                    <a href="{{ user.candidate.cv.url }}" download>Download CV</a>
+                {% else %}
+                    Not uploaded
+                {% endif %}
+            </p>
+            <p><strong>Portfolio:</strong> 
+                {% if user.candidate.portfolio %}
+                    <a href="{{ user.candidate.portfolio }}" target="">View Portfolio</a>
+                {% else %}
+                    Not provided
+                {% endif %}
+            </p>
+            <a href="{% url 'candidate:ceditprofile' %}" class="btn btn-primary mt-3">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

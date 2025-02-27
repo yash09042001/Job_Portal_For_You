@@ -1,0 +1,28 @@
+.dashboard-box {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dashboard-box:hover {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-box h3 {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.dashboard-box p {
+    margin: 0;
+    font-size: 1.2rem;
+}

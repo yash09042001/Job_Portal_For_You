@@ -1,0 +1,21 @@
+{% extends "dashboard/sidebar.html" %}
+{% load static %}
+{% block mydashboard %}
+
+  <title>Job Creation Forms</title>
+  <link rel="stylesheet" href="{% static 'job/css/create_job.css' %}">
+  
+          <h2 class="text-center mb-4">Job Creation Forms</h2>
+          {%load crispy_forms_tags %} 
+          {% block content%}
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form|crispy }}
+
+              <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+          {% endblock content %}
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl6zN3QOnEJhO8uTVyD8oKHzVSDt3vobFu5gmxEJFTfeyjD1cG1RD41hH/A" crossorigin="anonymous"></script>
+  
+
+{% endblock %}

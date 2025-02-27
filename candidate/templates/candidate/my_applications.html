@@ -1,0 +1,69 @@
+{% extends "dashboard/sidebar.html" %}
+{% load static %}
+{% block mydashboard %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Applications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'candidate/css/my_applications.css' %}">
+
+    <!-- Filter Form -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label for="title" class="form-label">Job Title</label>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Search by job title" value="{{ title }}">
+        </div>
+    
+        <div class="col-md-4">
+            <label for="company" class="form-label">Company</label>
+            <select name="company" id="company" class="form-select">
+                <option value="">Select Company</option>
+                {% for company in companies %}
+                    <option value="{{ company.name }}" {% if company.name|stringformat:"s" == company_filter %}selected{% endif %}>
+                        {{ company.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    
+        <div class="col-md-4">
+            <label for="status" class="form-label">Status</label>
+            <select name="status" id="status" class="form-select">
+                <option value="">Select Status</option>
+                {% for status, label in statuses %}
+                    <option value="{{ status }}" {% if status == status_filter %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    
+        <div class="col-md-12 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary me-2">Filter</button>
+            <a href="{% url 'candidate:my_applications' %}" class="btn btn-secondary">Reset</a>
+        </div>
+    </form>
+
+    <!-- Filter End Form -->
+
+    <!-- My Application List-->
+    <div class="application-list-container">
+        <h1>My Applications</h1>
+        {% for application in applications %}
+            <div class="application-item">
+                <h3>{{ application.job.title }}</h3>
+                <p><strong>Company:</strong> {{ application.job.recruiter.company.name }}</p>
+                <p><strong>Recruiter:</strong> {{ application.job.recruiter.user.first_name }} {{ application.job.recruiter.user.last_name }}</p>
+                <p><strong>Status:</strong> {{ application.status }}</p>
+                <p><strong>Applied On:</strong> {{ application.created_at }}</p>
+                <a href="{% url 'job:active_job_detail' application.job.id %}" class="btn btn-primary">View Job</a>
+            </div>
+        
+            <p>You haven't applied for any jobs yet. <a href="{% url 'job:active_job_list' %}">Browse jobs now</a>.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

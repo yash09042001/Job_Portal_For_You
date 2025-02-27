@@ -1,0 +1,125 @@
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Page header */
+.container h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    padding: 10px 0;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+/* Form labels */
+form label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+/* Form select and input fields */
+form .form-select,
+form .btn {
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+form .form-select:focus,
+form .btn:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Filter buttons */
+form .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+form .btn-primary:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+form .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+}
+
+form .btn-secondary:hover {
+    background-color: #545b62;
+    color: #fff;
+}
+
+/* Application list */
+.applications-list {
+    margin-top: 20px;
+}
+
+/* Individual application item */
+.application-item {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.application-item h5 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.application-item p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Horizontal line separator */
+.application-item hr {
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+/* No applications message */
+.applications-list p {
+    font-size: 1rem;
+    color: #777;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form .col-md-4 {
+        margin-bottom: 10px;
+    }
+
+    .application-item {
+        font-size: 0.9rem;
+    }
+
+    form .btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}

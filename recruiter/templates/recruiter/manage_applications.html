@@ -1,0 +1,47 @@
+{% extends "dashboard/sidebar.html" %}
+{% block mydashboard %}
+{% load static %}
+
+       <link rel="stylesheet" href="{% static 'recruiter/css/manage_applications.css' %}">
+        <div class="container">
+            <h2 class="text-center">Manage Applications</h2>
+
+            <!-- Filter Form -->
+            <form method="get" class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <label for="job_title" class="form-label">Job Title</label>
+                    <select name="title" id="title" class="form-select">
+                        <option value="">All Jobs</option>
+                        {% for job in jobs %}
+                        <option value="{{ job.title }}" {% if job.title == job_filter %}selected{% endif %}>
+                            {{ job.title }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">Filter</button>
+                    <a href="{% url 'recruiter:manage_applications' %}" class="btn btn-secondary">Reset</a>
+                </div>
+            </form>
+
+            <!-- Applications List -->
+            <div class="applications-list">
+                {% for application in applications %}
+                <div class="application-item">
+                    <h5>Candidate: {{ application.candidate.user.get_full_name }}</h5>
+                    <p>Job: {{ application.job.title }}</p>
+                    <p>Cv: {{application.candidate.cv }}</p>
+                    <p>Cover Letter: {{application.cover_letter }}</p>
+                    <p>Applied on: {{ application.created_at|date:"d/m/Y" }}</p> <!-- Format the applied date -->
+                    <p>Status: {{ application.get_status_display }}</p>
+                    
+                </div>
+                <hr>
+                {% empty %}
+                <p>No applications found for the selected filters.</p>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}

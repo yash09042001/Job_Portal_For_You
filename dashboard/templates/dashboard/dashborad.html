@@ -1,0 +1,63 @@
+{% extends "dashboard/sidebar.html" %}
+{% load static %}
+{% block mydashboard %}
+   
+    
+<link rel="stylesheet" href="{% static 'dashboard/css/dashstyle.css' %}">
+    
+    <div class="container mt-5">
+        <div class="row">
+            {% if is_recruiter %}
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>Created Jobs</h3>
+                        <p>{{ job_count }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>Total Application</h3>
+                        <p>{{ total_received_applications }}</p>
+                    </div>
+                </div>
+            {% elif is_candidate %}
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>Applied Jobs</h3>
+                        <p>{{ application_count }}</p>
+                    </div>
+                </div>
+               
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>In Process Application</h3>
+                        <p>{{ in_process_count }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>Interview Scheduled</h3>
+                        <p>{{ interview_scheduled_count }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>Accepted</h3>
+                        <p>{{ accepted_count }}</p>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-6">
+                    <div class="dashboard-box">
+                        <h3>Rejected Application</h3>
+                        <p>{{ rejected_count }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
